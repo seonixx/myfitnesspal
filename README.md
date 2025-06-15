@@ -7,7 +7,7 @@ Leverages private APIs and OAuth authentication to give persistent, reliable con
 ## Installation
 
 ```bash
-go get github.com/seonixx/myfitnesspal
+go get github.com/seonixx/myfitnesspal@latest
 ```
 
 ## Quick Start
