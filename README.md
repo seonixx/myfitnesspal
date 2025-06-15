@@ -12,7 +12,13 @@ go get github.com/seonixx/myfitnesspal
 
 ## Quick Start
 
-1. Create a new file `main.go` with the following code:
+1. Create a .env file:
+
+```bash
+cp .env.sample .env
+```
+
+2. Create a new file `main.go` with the following code:
 
 ```go
 package main
@@ -26,7 +32,7 @@ import (
 )
 
 func main() {
-    // Create a new client with your API credentials
+    // Create a new client (credentials in .env.sample)
     client := myfitnesspal.NewClient(
         os.Getenv("MFP_CLIENT_ID"),
         os.Getenv("MFP_CLIENT_SECRET"),
@@ -53,7 +59,7 @@ func main() {
 }
 ```
 
-2. Run the example:
+3. Run the example:
 
 ```bash
 go run main.go
