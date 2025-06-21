@@ -42,6 +42,9 @@ type TokenResponse struct {
 // UserSession represents a user's authentication session
 type UserSession struct {
 	UserID       string    `json:"user_id"`
+	Email        string    `json:"email"`
+	FirstName    string    `json:"first_name"`
+	LastName     string    `json:"last_name"`
 	DomainUserID string    `json:"domain_user_id"`
 	AccessToken  string    `json:"access_token"`
 	RefreshToken string    `json:"refresh_token"`
@@ -160,6 +163,11 @@ func (c *Client) createSessionFromTokenResponse(mfpUserID string, tokenResp *Tok
 			session.DomainUserID = link.DomainUserID
 			break
 		}
+	}
+	session.Email = user.ProfileEmails.Emails[0].Email
+	session.FirstName = user.Profile.FirstName
+	if user.Profile.LastName != nil {
+		session.LastName = *user.Profile.LastName
 	}
 
 	if session.DomainUserID == "" {

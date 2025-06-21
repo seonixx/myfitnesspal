@@ -33,7 +33,13 @@ func main() {
 		log.Fatalf("Error logging in: %v", err)
 	}
 	fmt.Printf("Successfully logged in. Session expires at %v\n", session.ExpiresAt)
-
+	fmt.Printf("Email: %s\n", session.Email)
+	if session.FirstName != "" {
+		fmt.Printf("First Name: %s\n", session.FirstName)
+	}
+	if session.LastName != "" {
+		fmt.Printf("Last Name: %s\n", session.LastName)
+	}
 	// Get user info
 	user, err := client.GetUser(session)
 	if err != nil {
@@ -44,6 +50,7 @@ func main() {
 	fmt.Printf("Domain: %s\n", user.Domain)
 	fmt.Printf("Region: %s\n", user.Region)
 	fmt.Printf("Status: %s\n", user.Status)
+
 	fmt.Printf("Profile:\n")
 	fmt.Printf("  Full Name: %s\n", user.Profile.FullName)
 	fmt.Printf("  Display Name: %s\n", user.Profile.DisplayName)
